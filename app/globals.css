@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* Palette taken from the JASS MEDIA logo: white ground, near-black navy lettering, orange mark. */
+@theme {
+  --color-paper: #ffffff;
+  --color-mist: #f4f5f9;
+  --color-ink: #0b0b1c;
+  --color-ink-muted: #4a4f63;
+  --color-ink-dim: #6b7085;
+  --color-blaze: #fa6b05;
+  --color-blaze-hover: #ff8427;
+  /* Darker orange for small text on white, where the logo orange is too faint to read */
+  --color-ember: #c44f04;
+
+  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+}
+
+@layer components {
+  .container-custom {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .glass-card {
+    background: #fff;
+    border: 1px solid rgb(11 11 28 / 0.1);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 1px 2px rgb(11 11 28 / 0.04),
+      0 8px 24px rgb(11 11 28 / 0.05);
+  }
+
+  .btn-blaze {
+    color: #fff;
+    background: var(--color-blaze);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-blaze:hover {
+    background: var(--color-blaze-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgb(250 107 5 / 0.3);
+  }
+}
+
+/* Continuous right-to-left marquee. The track holds two identical groups,
+   so shifting it by -50% lands exactly where it started. */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--marquee-gap, 1rem);
+  padding-right: var(--marquee-gap, 1rem);
+  margin: 0;
+  list-style: none;
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+@media (hover: hover) {
+  .marquee-pausable:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Hero lettering is a 3D render. Two mask layers slice thin cuts through it: three leaning
+   upright cuts and one long slash across, so the letters read as separate cut blocks. */
+.hero-word {
+  --cut: 0.9%;
+  -webkit-mask-image:
+    linear-gradient(
+      100deg,
+      #000 0 24%,
+      transparent 24% calc(24% + var(--cut)),
+      #000 calc(24% + var(--cut)) 49%,
+      transparent 49% calc(49% + var(--cut)),
+      #000 calc(49% + var(--cut)) 75%,
+      transparent 75% calc(75% + var(--cut)),
+      #000 calc(75% + var(--cut))
+    ),
+    linear-gradient(174deg, #000 0 55%, transparent 55% 57.5%, #000 57.5%);
+  mask-image:
+    linear-gradient(
+      100deg,
+      #000 0 24%,
+      transparent 24% calc(24% + var(--cut)),
+      #000 calc(24% + var(--cut)) 49%,
+      transparent 49% calc(49% + var(--cut)),
+      #000 calc(49% + var(--cut)) 75%,
+      transparent 75% calc(75% + var(--cut)),
+      #000 calc(75% + var(--cut))
+    ),
+    linear-gradient(174deg, #000 0 55%, transparent 55% 57.5%, #000 57.5%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Faint dot grid that fades towards the edges */
+.hero-grid {
+  background-image: radial-gradient(rgb(11 11 28 / 0.14) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+}
+
+/* Studio-wall shadows, as if lit from the upper right: everything throws a large, soft grey
+   shadow down and to the left. */
+.hero-word-cast {
+  filter: drop-shadow(-46px 54px 38px rgb(11 11 28 / 0.3));
+}
+
+.hero-prop {
+  filter: drop-shadow(-22px 30px 20px rgb(11 11 28 / 0.38));
+}
+
+/* the glow behind the lettering drifts and swells */
+.hero-glow {
+  animation: hero-glow 12s ease-in-out infinite;
+}
+
+@keyframes hero-glow {
+  33% {
+    transform: translate(6%, -4%) scale(1.12);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate(-6%, 3%) scale(0.94);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow {
+    animation: none;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
