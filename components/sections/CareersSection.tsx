@@ -1,7 +1,7 @@
 import { Lightbulb, Target, Users } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageSections";
 import { Reveal } from "@/components/Reveal";
-import { contactInfo, services } from "@/lib/site";
+import { contactInfo } from "@/lib/site";
 
 const traits = [
   {
@@ -27,7 +27,6 @@ export function CareersSection() {
       <PageHero
         eyebrow="Careers"
         title="Build Brands With Us"
-        intro="We are always glad to hear from marketers, designers, editors and developers who want to do work that moves real businesses."
       />
 
       <section className="section-padding pt-0">
@@ -46,22 +45,6 @@ export function CareersSection() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-mist">
-        <div className="container-custom">
-          <SectionHeading title="WHERE YOU COULD FIT" intro="The teams behind our services." />
-          <ul className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {services.map((service) => (
-              <li
-                key={service.slug}
-                className="rounded-full border border-ink/10 bg-paper px-5 py-2.5 text-sm font-medium text-ink"
-              >
-                {service.name}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

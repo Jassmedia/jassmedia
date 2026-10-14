@@ -1,4 +1,8 @@
+import type { Metadata } from "next";
 import { ClientLogos, LogoStrip } from "@/components/ClientLogos";
+import { JsonLd } from "@/components/JsonLd";
+import { BlogTeaser } from "@/components/sections/BlogTeaser";
+import { contactInfo } from "@/lib/site";
 import { HeroProps } from "@/components/HeroProps";
 import { ButtonLink } from "@/components/PageSections";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -6,14 +10,36 @@ import { CareersSection } from "@/components/sections/CareersSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "JASS MEDIA",
+          url: "https://jassmedia.in",
+          logo: "https://jassmedia.in/logos/jass-mark.png",
+          description:
+            "Growth and marketing consultancy: performance marketing, social media, SEO, branding, CGI ads, website and app development.",
+          telephone: contactInfo.phone.replace(/s/g, ""),
+          email: contactInfo.email,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Hyderabad",
+            addressRegion: "Telangana",
+            addressCountry: "IN",
+            streetAddress: contactInfo.location,
+          },
+          areaServed: "IN",
+        }}
+      />
       <section className="relative overflow-hidden">
         {/* Giant 3D wordmark with studio photos around it */}
         <div className="relative h-[36svh] min-h-[260px] overflow-hidden md:h-[52svh] lg:h-[calc(100svh-5rem)] lg:min-h-[600px]">
-          {/* backdrop: faint dot grid and a warm glow */}
-          <div aria-hidden="true" className="hero-grid absolute inset-0" />
+          {/* backdrop: a warm glow */}
           <div
             aria-hidden="true"
             className="hero-glow absolute left-1/2 top-[18%] h-[70%] w-[min(70vw,56rem)] -translate-x-1/2 rounded-full bg-blaze/15 blur-3xl"
@@ -22,7 +48,7 @@ export default function HomePage() {
           {/* the wrapper casts the wall shadow; the cuts are a mask on the image itself */}
           <div className="hero-word-cast absolute left-1/2 top-[33%] lg:top-[28%] w-[68vw] lg:w-[min(52vw,48rem)] -translate-x-1/2">
             <img
-              src="/hero/jass-3d-b.webp"
+              src="/hero/jass-3d-duo.webp"
               alt="JASS"
               width={1082}
               height={386}
@@ -70,6 +96,7 @@ export default function HomePage() {
       <div id="clients" data-nav="/#clients" className="scroll-mt-16">
         <ClientLogos />
       </div>
+      <BlogTeaser />
       <div id="contact" data-nav="/#contact" className="scroll-mt-16">
         <ContactSection />
       </div>

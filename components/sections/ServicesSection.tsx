@@ -32,7 +32,6 @@ export function ServicesSection() {
 
       <section className="section-padding pt-0">
         <div className="container-custom">
-          <SectionHeading title="WHAT WE DO" intro="Eight disciplines, one team, one revenue goal." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => {
               const Icon = serviceIcons[i];

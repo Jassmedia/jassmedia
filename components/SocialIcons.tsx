@@ -7,12 +7,6 @@ const paths: Record<string, React.ReactNode> = {
     </>
   ),
   Facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
-  YouTube: (
-    <>
-      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-      <path d="m10 15 5-3-5-3z" />
-    </>
-  ),
   LinkedIn: (
     <>
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -22,7 +16,14 @@ const paths: Record<string, React.ReactNode> = {
   ),
 };
 
-export const socials = Object.keys(paths);
+// Profile addresses; a network without one yet points nowhere ("#") until it is filled in.
+const profiles: Record<string, string> = {
+  Instagram: "https://www.instagram.com/jassmedia.in",
+  Facebook: "#",
+  LinkedIn: "#",
+};
+
+export const socials = Object.keys(paths).map((name) => ({ name, href: profiles[name] ?? "#" }));
 
 export function SocialIcon({ name, size = 20 }: { name: string; size?: number }) {
   return (

@@ -35,10 +35,11 @@ export function Footer() {
               connection.
             </p>
             <div className="flex items-center gap-4">
-              {socials.map((name) => (
+              {socials.map(({ name, href }) => (
                 <a
                   key={name}
-                  href="#"
+                  href={href}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   aria-label={name}
                   className="text-ink-muted hover:text-ember transition-colors duration-200"
                 >

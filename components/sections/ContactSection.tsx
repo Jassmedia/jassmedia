@@ -68,10 +68,11 @@ export function ContactSection() {
               <div>
                 <span className="text-xs tracking-widest uppercase text-ink-dim block mb-4">Follow Us</span>
                 <div className="flex items-center gap-4">
-                  {socials.map((name) => (
+                  {socials.map(({ name, href }) => (
                     <a
                       key={name}
-                      href="#"
+                      href={href}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       aria-label={name}
                       className="w-10 h-10 rounded-lg bg-ink/5 flex items-center justify-center text-ink-muted hover:text-ember hover:bg-blaze/10 transition-colors"
                     >

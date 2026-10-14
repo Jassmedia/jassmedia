@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -13,7 +14,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jassmedia.in"),
-  title: "JASS MEDIA | Growth & Marketing Consultancy",
+  title: { default: "JASS MEDIA | Growth & Marketing Consultancy", template: "%s | JASS MEDIA" },
   description,
   authors: [{ name: "JASS MEDIA" }],
   keywords: [
@@ -57,6 +58,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppButton />
         <Analytics />
+        {/* Google Analytics 4 */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-GR031NK5BF" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-GR031NK5BF');`}
+        </Script>
       </body>
     </html>
   );

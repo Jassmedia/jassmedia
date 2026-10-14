@@ -4,6 +4,7 @@ export const navLinks = [
   { name: "About Us", href: "/#about" },
   { name: "Careers", href: "/#careers" },
   { name: "Clients", href: "/#clients" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/#contact" },
 ];
 
@@ -70,8 +71,8 @@ export const clientLogos: { name?: string; src: string; width: number; height: n
   {
     name: "Summit Dental and Orthopedic Clinic",
     src: "/logos/summit-dental-orthopedic-clinic.png",
-    width: 150,
-    height: 150,
+    width: 332,
+    height: 240,
   },
   { name: "Brownie Point", src: "/logos/brownie-point.png", width: 460, height: 240 },
   { name: "Sarva Ruchi Kitchen", src: "/logos/sarva-ruchi-kitchen.png", width: 150, height: 150 },

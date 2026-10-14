@@ -4,7 +4,7 @@
 // from the top of the hero on thin cords.
 
 const INK = "#0b0b1c";
-const BLAZE = "#fa6b05";
+const BLAZE = "#eb6f18";
 
 const PlayButton = () => (
   <svg viewBox="0 0 132 102">

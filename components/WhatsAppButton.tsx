@@ -2,7 +2,7 @@ import { contactInfo } from "@/lib/site";
 
 const greeting = "Hi JASS MEDIA, I'd like to know more about your services.";
 
-// Floating chat button shown on every page. Opens WhatsApp with a greeting already typed.
+// Floating WhatsApp icon shown on every page. Opens WhatsApp with a greeting already typed.
 export function WhatsAppButton() {
   return (
     <a
@@ -10,13 +10,18 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full bg-[#25d366] p-3.5 text-white shadow-lg shadow-black/25 transition-transform duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25d366] sm:bottom-6 sm:right-6"
+      className="fixed bottom-5 right-5 z-40 text-[#25d366] drop-shadow-[0_4px_8px_rgb(0_0_0_/_0.25)] transition-transform duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25d366] sm:bottom-6 sm:right-6"
     >
-      <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-40 group-hover:pl-2 group-focus-visible:max-w-40 group-focus-visible:pl-2 md:block">
-        Chat with us
-      </span>
-      <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor" aria-hidden="true">
-        <path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.29.6 4.53 1.74 6.5L3 29l6.66-1.74A12.98 12.98 0 0016.04 29C23.2 29 29.03 23.18 29.03 16S23.2 3 16.04 3zm0 23.8c-1.94 0-3.84-.52-5.5-1.5l-.4-.24-3.95 1.04 1.05-3.85-.26-.4a10.76 10.76 0 01-1.65-5.75c0-5.96 4.85-10.8 10.82-10.8 5.96 0 10.8 4.84 10.8 10.8s-4.95 10.7-10.9 10.7zm5.93-8.09c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.33-.84 1.06-1.03 1.28-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62a9.8 9.8 0 01-1.82-2.26c-.19-.33-.02-.5.14-.67.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.37c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.5.21 2.06.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.3-.22-.62-.38z" />
+      {/* the WhatsApp mark: green speech bubble with a white phone */}
+      <svg viewBox="0 0 32 32" width="56" height="56" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M16.04 2C8.3 2 2.03 8.27 2.03 16c0 2.47.65 4.88 1.88 7L2 30l7.18-1.88A13.98 13.98 0 0016.04 30C23.77 30 30.04 23.73 30.04 16S23.77 2 16.04 2z"
+        />
+        <path
+          fill="#fff"
+          d="M23.06 19.7c-.38-.19-2.26-1.12-2.61-1.25-.35-.13-.61-.19-.86.19-.26.38-.99 1.25-1.21 1.5-.22.26-.45.29-.83.1-.38-.19-1.61-.6-3.07-1.9a11.5 11.5 0 01-2.13-2.65c-.22-.38-.02-.59.17-.78.17-.17.38-.45.57-.67.19-.22.26-.38.38-.64.13-.26.06-.48-.03-.67-.1-.19-.86-2.07-1.18-2.83-.31-.74-.62-.64-.86-.65h-.73c-.26 0-.67.1-1.02.48-.35.38-1.34 1.31-1.34 3.18s1.37 3.69 1.56 3.95c.19.26 2.7 4.12 6.53 5.77.91.39 1.63.63 2.18.81.92.29 1.75.25 2.41.15.74-.11 2.26-.92 2.58-1.82.32-.89.32-1.66.22-1.82-.1-.16-.35-.26-.73-.45z"
+        />
       </svg>
     </a>
   );

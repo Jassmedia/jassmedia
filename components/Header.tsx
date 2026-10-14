@@ -87,7 +87,8 @@ export function Header() {
     };
   }, [pathname]);
 
-  const isActive = (href: string) => section === href;
+  const isActive = (href: string) =>
+    pathname === "/" ? section === href : !href.includes("#") && href !== "/" && pathname.startsWith(href);
 
   // "Home" on the home page just returns to the top instead of reloading.
   const goHome = (e: React.MouseEvent) => {
@@ -108,15 +109,13 @@ export function Header() {
       <div className="container-custom">
         <nav className="flex items-center justify-between" aria-label="Main">
           <a href="/" onClick={goHome} className="relative z-10 flex items-center gap-3">
-            {/* Shows only the J mark from the square logo file; the wordmark beside it is live text. */}
-            <span
-              aria-hidden="true"
-              className="block h-[46px] w-9 flex-shrink-0 bg-no-repeat"
-              style={{
-                backgroundImage: "url(/logos/jass-media.png)",
-                backgroundSize: "150px 150px",
-                backgroundPosition: "-56px -30px",
-              }}
+            {/* The J mark, redrawn large from the small logo file so it stays sharp on any screen */}
+            <img
+              src="/logos/jass-mark.png"
+              alt=""
+              width={393}
+              height={498}
+              className="h-[46px] w-auto flex-shrink-0"
             />
             <span className="headline text-xl tracking-widest text-ink">JASS MEDIA</span>
           </a>
