@@ -20,8 +20,8 @@ export default function HomePage() {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           name: "JASS MEDIA",
-          url: "https://jassmedia.in",
-          logo: "https://jassmedia.in/logos/jass-mark.png",
+          url: "https://www.jassmedia.in",
+          logo: "https://www.jassmedia.in/logos/jass-mark.png",
           description:
             "Growth and marketing consultancy: performance marketing, social media, SEO, branding, CGI ads, website and app development.",
           telephone: contactInfo.phone.replace(/s/g, ""),

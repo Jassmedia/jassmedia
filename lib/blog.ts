@@ -20,7 +20,8 @@ export type Post = {
   html: string;
 };
 
-export const siteUrl = "https://jassmedia.in";
+// The live site lives on the www address (jassmedia.in redirects there), so every canonical link uses it.
+export const siteUrl = "https://www.jassmedia.in";
 
 const dir = path.join(process.cwd(), "content", "blog");
 

@@ -13,7 +13,7 @@ const description =
   "A strategic marketing consultancy bridging the gap between algorithmic AI efficiency, human psychological positioning, and high-fidelity creative execution.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jassmedia.in"),
+  metadataBase: new URL("https://www.jassmedia.in"),
   title: { default: "JASS MEDIA | Growth & Marketing Consultancy", template: "%s | JASS MEDIA" },
   description,
   authors: [{ name: "JASS MEDIA" }],
