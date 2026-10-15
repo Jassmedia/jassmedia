@@ -54,11 +54,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={dmSans.variable}>
       <body className="font-sans antialiased bg-paper text-ink min-h-screen overflow-x-hidden">
+        {/* Google Tag Manager (noscript): only used by visitors with JavaScript turned off */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WN7X94CL"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Header />
         <main className="relative min-h-screen pt-20">{children}</main>
         <Footer />
         <WhatsAppButton />
         <Analytics />
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WN7X94CL');`}
+        </Script>
         {/* Google Analytics 4 */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-GR031NK5BF" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
